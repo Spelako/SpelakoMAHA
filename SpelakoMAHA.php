@@ -91,7 +91,14 @@ while(true) {
 			if($v->type == 'GroupMessage'
 			&& $v->messageChain[1]->type == 'Plain'
 			&& $v->messageChain[1]->text[0] == '/') {
-				_log('Request by '.$v->sender->id.': '.$v->messageChain[1]->text);
+				_log(SpelakoUtils::buildString(
+					'群: %1$s | 用户: %2$s | 消息: %3$s',
+					[
+						$v->sender->group->id,
+						$v->sender->id,
+						$v->messageChain[1]->text
+					]
+				));
 				$requestResult = $core->execute($v->messageChain[1]->text, $v->sender->id);
 				if(!$requestResult) {
 					$cmd = explode(' ', $v->messageChain[1]->text)[0];
@@ -117,7 +124,6 @@ while(true) {
 						'text' => $requestResult
 					]]
 				]));
-				var_dump($sendResult);
 			}
 		}
 		sleep(1);
