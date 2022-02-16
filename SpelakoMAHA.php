@@ -51,7 +51,7 @@ $core = new SpelakoCore(realpath($cliargs['config']));
 
 echo SpelakoUtils::buildString([
 	'Copyright (C) 2020-2022 Spelako Project',
-	'This program licensed under the GNU Affero General Public License version 3 (AGPLv3).'
+	'This is program licensed under the GNU Affero General Public License version 3 (AGPLv3).'
 ]).PHP_EOL;
 
 while(true) {
